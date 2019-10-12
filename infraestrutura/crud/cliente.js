@@ -28,13 +28,13 @@ class Cliente {
     const { id, nome, cpf } = novoItem;
     const sql = `UPDATE Clientes SET nome='${nome}', CPF='${cpf}' WHERE id=${id}`;
 
-    return executaQuery(sql);
+    return executaQuery(sql).then(() => novoItem);
   }
 
   deleta(id) {
     const sql = `DELETE FROM Clientes WHERE id=${id}`;
 
-    executaQuery(sql);
+    return executaQuery(sql).then(() => id);
   }
 }
 
